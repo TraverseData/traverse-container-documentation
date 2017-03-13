@@ -6,7 +6,7 @@
   * [Resource URL](#resource-url)
   * [`Start` method](#start-method)
   * [`User` object](#user-object)
-  * [Example](#example)
+  * [Examples](#examples)
   * [Best practices](#best-practices)
 
 ## Overview
@@ -46,7 +46,7 @@ A `user` object is written as a [Javascript Object Literal](http://www.dyn-web.c
 The Container automatically handles the normalization and hashing of potentially sensitive fields. The plaintext values never leave the user's browser. You may also set these hashes manually using the following the naming convention: {parameter name}{hash type}{original character casing}. E.g. `emailMd5Upper`, `emailSha1Lower`, etc. If you choose to do this, we require all three of Md5, Sha1, and Sha256 hashes for both upper and lower-case input values, so 6 total for each field that is passed hashed.
 
 
-## Example
+## Examples
 
 Load the container and initialize with some user data:
 
