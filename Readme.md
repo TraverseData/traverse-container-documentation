@@ -4,8 +4,8 @@
 
   * [Overview](#overview)
   * [Resource URL](#resource-url)
-  * [`User` object](#user-object)
   * [`Start` method](#start-method)
+  * [`User` object](#user-object)
   * [Example](#example)
   * [Best practices](#best-practices)
 
