@@ -40,31 +40,10 @@ A `user` object is written as a [Javascript Object Literal](http://www.dyn-web.c
 | Parameter   | Description | Required |
 | ----------- | ----------- | -------- |
 | `email`     | Plaintext (non-hashed) email address. *The Container will normalize and hash the email address client-side, and it will not be transmitted*.<sup id="a1">[1](#f1)</sup> | Yes |
-| `first`     | First name. | No |
-| `last`      | Last name. | No |
-| `phone`     | Free-form telephone number. | No |
-| `carrier`   | Telephone carrier. | No |
-| `street1`   | The first line of the street address (e.g., `"123 Main St."`). | No |
-| `street2`   | Second line of the street address (e.g., `"Apartment 1A"`).        | No |
-| `city`      | The city name.  | No |
-| `state`     | The full U.S. state name or two-letter abbreviation. | No |
-| `zip`       | The U.S. zip code, 5 or 9 numbers, with or without hyphen. | No |
-| `context`   | Array of strings detailing the context of a user's interaction on the site, such as interests and actions. E.g. `['in-market car', 'smoker']`. | No |
-| `gender`    | Gender of user, either `male` or `female`. | No |
-| `birthYear` | Four-digit year in which the use was born (YYYY). | No |
-| `birthMonth` | Numeric month in which the user was born (MM). | No |
-| `birthDay`  | Day of the month in which the user was born (DD). | No |
-| `userId`    | Client-specific string that uniquely identifies a user within your system. This could be a session ID, a visitor ID from a first-party cookie, or an ID passed via URL parameter from page to page. | No |
-| `aaid`      | Android ID. | No |
-| `gaid`      | Google's Advertising ID. | No |
-| `idfa`      | Apple's iOS Identifier for Advertisers. | No  |
-| `waid`      | Microsoft's Windows Advertising ID. | No |
-| `uaid`      | Any unknown advertising ID. Use this value if you are uncertain which type you are receiving. | No |
-| `uaidHash`  | Use this if you meet the criteria above, your ID has been hashed, and you do not know which algorithm was used. | No |
 
 ### Hashed Data
 
-The Container automatically handles the normalization and hashing of potentially sensitive fields. You may set these hashes manually using the following the naming convention: {parameter name}{hash type}{original character casing}. E.g. `emailMd5Upper`, `waidSha1Lower`, etc. If you choose to do this, we require all three of Md5, Sha1, and Sha256 hashes for both upper and lower-case input values, so 6 total for each field that is passed hashed.
+The Container automatically handles the normalization and hashing of potentially sensitive fields. The plaintext values never leave the user's browser. You may also set these hashes manually using the following the naming convention: {parameter name}{hash type}{original character casing}. E.g. `emailMd5Upper`, `emailSha1Lower`, etc. If you choose to do this, we require all three of Md5, Sha1, and Sha256 hashes for both upper and lower-case input values, so 6 total for each field that is passed hashed.
 
 
 ## Example
@@ -76,16 +55,6 @@ Load the container and initialize with some user data:
 <script type="text/javascript">
 TraverseContainer.start({
   email:     "john.doe@example.com", /* The Container will normalize and hash the email address. */
-  first:     "John",
-  last:      "Doe",
-  phone:     "123-456-6789",
-  street1:   "123 Main St.",
-  street2:   "Apartment 1A",
-  city:      "Springfield",
-  state:     "IL",
-  zip:       "12345",
-  context:   ["in-market car", "smoker"],
-  userId:    "123abc"
 });
 </script>
 ```
